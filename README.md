@@ -148,10 +148,10 @@ graph TD
     Embed -.->|"∂L/∂embed"| embed_grad["Embedding Gradients"]
 
     %% Styling
-    classDef forward fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
-    classDef backward fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,stroke-dasharray: 5 5
-    classDef weights fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    classDef loss fill:#ffebee,stroke:#c62828,stroke-width:3px
+    classDef forward fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#2d2d2d
+    classDef backward fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,stroke-dasharray: 5 5,color:#2d2d2d
+    classDef weights fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#2d2d2d
+    classDef loss fill:#ffebee,stroke:#c62828,stroke-width:3px,color:#2d2d2d
     
     class Input,Embed,Q,K,V,Q_heads,K_heads,V_heads,Scores,Weights,AttnOut,Reshape,OutProj,Residual,LayerNorm,FinalOut forward
     class W_q,W_k,W_v,W_o,embed_grad weights
