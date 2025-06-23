@@ -187,37 +187,47 @@ The tool demonstrates:
 
 ## Mathematical Foundations
 
-This implementation demonstrates key mathematical concepts from engineering mathematics:
+This implementation demonstrates key mathematical concepts from engineering mathematics and applied linear algebra:
 
-### Matrix Operations (**Stroud Ch. 7-8: Matrices and Determinants**)
+### Vectors and Vector Operations (**Boyd Ch. 1-3: Vectors**) (**Stroud Ch. 20: Vectors**)
+- **Vector Addition/Scaling**: Token embeddings as high-dimensional vectors
+- **Inner Products**: Attention score computation Q·K^T
+- **Vector Norms**: Gradient magnitude tracking and normalization
+- **Linear Combinations**: Weighted attention outputs
+- **Orthogonality**: Independent feature representations in embedding space
+
+### Matrix Operations (**Boyd Ch. 6-7: Matrices**) (**Stroud Ch. 7-8: Matrices and Determinants**)
 - **Matrix Multiplication**: Q @ K^T in attention mechanism
 - **Matrix Transpose**: K^T for attention scores
-- **Matrix Reshaping**: Multi-head attention tensor operations
-- **Linear Transformations**: Embedding and projection layers
+- **Block Matrices**: Multi-head attention parallel computation
+- **Matrix-Vector Products**: Linear transformations (W_q, W_k, W_v)
+- **Kronecker Products**: Tensor reshaping operations
 
-### Calculus and Differentiation (**Stroud Ch. 11-13: Differentiation**)
+### Linear Functions and Models (**Boyd Ch. 8: Linear Functions**) (**Stroud Ch. 11: Functions**)
+- **Affine Functions**: Embedding and projection layers
+- **Linear Regression**: Least squares in parameter initialization
+- **Function Composition**: Deep network layer stacking
+- **Matrix Representations**: Weight matrices as linear transformations
+
+### Least Squares and Optimization (**Boyd Ch. 12-13: Least Squares**) (**Stroud Ch. 14: Optimization**)
+- **Gradient Descent**: Following negative gradient for loss minimization
+- **Residuals**: Prediction errors in cross-entropy loss
+- **Regularization**: Weight decay and gradient clipping
+- **Convergence Analysis**: Training stability and learning rates
+- **Normal Equations**: Theoretical foundations of parameter updates
+
+### Matrix Factorizations (**Boyd Ch. 10-11: Matrix Factorization**)
+- **QR Decomposition**: Orthogonal transformations in multi-head attention
+- **Singular Value Decomposition**: Understanding attention weight structures
+- **Low-Rank Approximations**: Efficient attention computation
+- **Eigenvalue Problems**: Principal components in embedding spaces
+
+### Differentiation and Backpropagation (**Stroud Ch. 11-13: Differentiation**)
 - **Chain Rule**: Foundation of backpropagation algorithm
 - **Partial Derivatives**: ∂L/∂W for weight gradients
-- **Composite Functions**: Nested operations in neural networks
-- **Gradient Computation**: Direction of steepest ascent/descent
-
-### Vector Calculus (**Stroud Ch. 20-21: Vector Calculus**)
-- **Vector Operations**: Embedding space transformations
-- **Dot Products**: Attention score computation
+- **Jacobian Matrices**: Multi-dimensional gradient computation
 - **Gradient Vectors**: Parameter update directions
-- **Vector Fields**: Loss landscape navigation
-
-### Optimization (**Stroud Ch. 14: Maxima and Minima**)
-- **Gradient Descent**: Following negative gradient for minimization
-- **Local Minima**: Understanding loss landscape topology
-- **Convergence**: Mathematical conditions for training success
-- **Learning Rate**: Step size in optimization space
-
-### Functions and Limits (**Stroud Ch. 3-4: Functions and Limits**)
-- **Softmax Function**: Probability distribution over attention weights
-- **Exponential Functions**: Activation functions and normalization
-- **Composite Functions**: Deep network architecture
-- **Continuity**: Smooth gradient flow requirements
+- **Vector Calculus**: Loss landscape navigation
 
 ## Contributing
 
