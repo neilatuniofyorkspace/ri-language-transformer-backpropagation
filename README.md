@@ -187,6 +187,8 @@ The tool demonstrates:
 
 ## Mathematical Foundations
 
+*Based on "Engineering Mathematics" by K.A. Stroud (ISBN: 978-1137031204) and "Introduction to Applied Linear Algebra: Vectors, Matrices, and Least Squares" by Stephen Boyd and Lieven Vandenberghe (ISBN: 978-1316518960)*
+
 This implementation demonstrates key mathematical concepts from engineering mathematics and applied linear algebra:
 
 ### Vectors and Vector Operations (**Boyd Ch. 1-3: Vectors**) (**Stroud Ch. 20: Vectors**)
