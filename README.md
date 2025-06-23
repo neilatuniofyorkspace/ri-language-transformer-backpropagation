@@ -185,6 +185,40 @@ The tool demonstrates:
 - **Gradient Flow**: Magnitude of gradients at each layer
 - **Training Metrics**: Loss curves, accuracy, gradient norms
 
+## Mathematical Foundations
+
+This implementation demonstrates key mathematical concepts from engineering mathematics:
+
+### Matrix Operations (**Stroud Ch. 7-8: Matrices and Determinants**)
+- **Matrix Multiplication**: Q @ K^T in attention mechanism
+- **Matrix Transpose**: K^T for attention scores
+- **Matrix Reshaping**: Multi-head attention tensor operations
+- **Linear Transformations**: Embedding and projection layers
+
+### Calculus and Differentiation (**Stroud Ch. 11-13: Differentiation**)
+- **Chain Rule**: Foundation of backpropagation algorithm
+- **Partial Derivatives**: ∂L/∂W for weight gradients
+- **Composite Functions**: Nested operations in neural networks
+- **Gradient Computation**: Direction of steepest ascent/descent
+
+### Vector Calculus (**Stroud Ch. 20-21: Vector Calculus**)
+- **Vector Operations**: Embedding space transformations
+- **Dot Products**: Attention score computation
+- **Gradient Vectors**: Parameter update directions
+- **Vector Fields**: Loss landscape navigation
+
+### Optimization (**Stroud Ch. 14: Maxima and Minima**)
+- **Gradient Descent**: Following negative gradient for minimization
+- **Local Minima**: Understanding loss landscape topology
+- **Convergence**: Mathematical conditions for training success
+- **Learning Rate**: Step size in optimization space
+
+### Functions and Limits (**Stroud Ch. 3-4: Functions and Limits**)
+- **Softmax Function**: Probability distribution over attention weights
+- **Exponential Functions**: Activation functions and normalization
+- **Composite Functions**: Deep network architecture
+- **Continuity**: Smooth gradient flow requirements
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
