@@ -1,4 +1,4 @@
-# GradScope 🔬
+# 🔬transformer-backpropagation
 
 A visualization tool for understanding backpropagation in transformer neural networks.
 
@@ -15,18 +15,18 @@ GradScope provides an interactive visualization of how gradients flow through a 
 
 ## Features
 
-- 🧠 **Real Transformer Implementation**: Complete mini-transformer with multi-head attention
-- 📊 **Live Gradient Visualization**: See gradients flow in real-time
-- 🎛️ **Interactive Controls**: Toggle backprop, step through training
-- 📈 **Training Metrics**: Loss curves, gradient norms, accuracy tracking
-- 🎨 **Attention Heatmaps**: Visualize what the model is "looking at"
+- **Real Transformer Implementation**: Complete mini-transformer with multi-head attention
+- **Live Gradient Visualization**: See gradients flow in real-time
+- **Interactive Controls**: Toggle backprop, step through training
+- **Training Metrics**: Loss curves, gradient norms, accuracy tracking
+- **Attention Heatmaps**: Visualize what the model is "looking at"
 
 ## Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/gradscope.git
-cd gradscope
+git clone https://github.com/..
+cd ri-language-transformer-backpropagation
 
 # Create virtual environment (recommended)
 python -m venv venv
