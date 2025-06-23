@@ -1,0 +1,7 @@
+numpy>=1.21.0
+matplotlib>=3.4.0
+tkinter-page>=0.0.5
+pytest>=6.2.0
+black>=21.5b0
+flake8>=3.9.0
+pytest-cov>=2.12.0
