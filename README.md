@@ -91,61 +91,61 @@ The transformer follows this directed computational graph:
 ```mermaid
 graph TD
     %% Input Layer
-    Input[Input Tokens<br/>x: [batch, seq_len]] --> Embed[Embedding Layer<br/>embed[x]: [batch, seq_len, d_model]]
+    Input["Input Tokens<br/>x: (batch, seq_len)"] --> Embed["Embedding Layer<br/>embed(x): (batch, seq_len, d_model)"]
     
     %% Multi-Head Attention
-    Embed --> Q[Query Projection<br/>Q = x @ W_q<br/>[batch, seq_len, d_model]]
-    Embed --> K[Key Projection<br/>K = x @ W_k<br/>[batch, seq_len, d_model]]
-    Embed --> V[Value Projection<br/>V = x @ W_v<br/>[batch, seq_len, d_model]]
+    Embed --> Q["Query Projection<br/>Q = x @ W_q<br/>(batch, seq_len, d_model)"]
+    Embed --> K["Key Projection<br/>K = x @ W_k<br/>(batch, seq_len, d_model)"]
+    Embed --> V["Value Projection<br/>V = x @ W_v<br/>(batch, seq_len, d_model)"]
     
     %% Reshape for Multi-Head
-    Q --> Q_heads[Reshape Q<br/>[batch, n_heads, seq_len, d_k]]
-    K --> K_heads[Reshape K<br/>[batch, n_heads, seq_len, d_k]]
-    V --> V_heads[Reshape V<br/>[batch, n_heads, seq_len, d_k]]
+    Q --> Q_heads["Reshape Q<br/>(batch, n_heads, seq_len, d_k)"]
+    K --> K_heads["Reshape K<br/>(batch, n_heads, seq_len, d_k)"]
+    V --> V_heads["Reshape V<br/>(batch, n_heads, seq_len, d_k)"]
     
     %% Attention Mechanism
-    Q_heads --> Scores[Attention Scores<br/>scores = Q @ K^T / √d_k<br/>[batch, n_heads, seq_len, seq_len]]
+    Q_heads --> Scores["Attention Scores<br/>scores = Q @ K^T / √d_k<br/>(batch, n_heads, seq_len, seq_len)"]
     K_heads --> Scores
     
-    Scores --> Weights[Attention Weights<br/>weights = softmax(scores)<br/>[batch, n_heads, seq_len, seq_len]]
+    Scores --> Weights["Attention Weights<br/>weights = softmax(scores)<br/>(batch, n_heads, seq_len, seq_len)"]
     
-    Weights --> AttnOut[Attention Output<br/>output = weights @ V<br/>[batch, n_heads, seq_len, d_k]]
+    Weights --> AttnOut["Attention Output<br/>output = weights @ V<br/>(batch, n_heads, seq_len, d_k)"]
     V_heads --> AttnOut
     
     %% Output Projection
-    AttnOut --> Reshape[Reshape<br/>[batch, seq_len, d_model]]
-    Reshape --> OutProj[Output Projection<br/>out = attn @ W_o<br/>[batch, seq_len, d_model]]
+    AttnOut --> Reshape["Reshape<br/>(batch, seq_len, d_model)"]
+    Reshape --> OutProj["Output Projection<br/>out = attn @ W_o<br/>(batch, seq_len, d_model)"]
     
     %% Residual Connection & Layer Norm
-    OutProj --> Residual[Residual Connection<br/>out + embedded]
+    OutProj --> Residual["Residual Connection<br/>out + embedded"]
     Embed --> Residual
-    Residual --> LayerNorm[Layer Normalization<br/>[batch, seq_len, d_model]]
+    Residual --> LayerNorm["Layer Normalization<br/>(batch, seq_len, d_model)"]
     
     %% Final Output
-    LayerNorm --> FinalOut[Final Output<br/>logits: [batch, seq_len, vocab_size]]
+    LayerNorm --> FinalOut["Final Output<br/>logits: (batch, seq_len, vocab_size)"]
     
     %% Loss Computation
-    FinalOut --> Loss[Cross-Entropy Loss<br/>L = -∑ y_true * log(softmax(logits))]
-    Target[Target Tokens<br/>y: [batch, seq_len]] --> Loss
+    FinalOut --> Loss["Cross-Entropy Loss<br/>L = -∑ y_true * log(softmax(logits))"]
+    Target["Target Tokens<br/>y: (batch, seq_len)"] --> Loss
     
     %% Gradient Flow (Backward Pass)
-    Loss -.->|∂L/∂logits| FinalOut
-    FinalOut -.->|∂L/∂ln_out| LayerNorm
-    LayerNorm -.->|∂L/∂residual| Residual
-    Residual -.->|∂L/∂out_proj| OutProj
-    Residual -.->|∂L/∂embedded| Embed
-    OutProj -.->|∂L/∂W_o| W_o[W_o Gradients]
-    OutProj -.->|∂L/∂attn| Reshape
-    Reshape -.->|∂L/∂attn_out| AttnOut
-    AttnOut -.->|∂L/∂weights| Weights
-    AttnOut -.->|∂L/∂V| V_heads
-    Weights -.->|∂L/∂scores| Scores
-    Scores -.->|∂L/∂Q| Q_heads
-    Scores -.->|∂L/∂K| K_heads
-    Q_heads -.->|∂L/∂W_q| W_q[W_q Gradients]
-    K_heads -.->|∂L/∂W_k| W_k[W_k Gradients]
-    V_heads -.->|∂L/∂W_v| W_v[W_v Gradients]
-    Embed -.->|∂L/∂embed| embed_grad[Embedding Gradients]
+    Loss -.->|"∂L/∂logits"| FinalOut
+    FinalOut -.->|"∂L/∂ln_out"| LayerNorm
+    LayerNorm -.->|"∂L/∂residual"| Residual
+    Residual -.->|"∂L/∂out_proj"| OutProj
+    Residual -.->|"∂L/∂embedded"| Embed
+    OutProj -.->|"∂L/∂W_o"| W_o["W_o Gradients"]
+    OutProj -.->|"∂L/∂attn"| Reshape
+    Reshape -.->|"∂L/∂attn_out"| AttnOut
+    AttnOut -.->|"∂L/∂weights"| Weights
+    AttnOut -.->|"∂L/∂V"| V_heads
+    Weights -.->|"∂L/∂scores"| Scores
+    Scores -.->|"∂L/∂Q"| Q_heads
+    Scores -.->|"∂L/∂K"| K_heads
+    Q_heads -.->|"∂L/∂W_q"| W_q["W_q Gradients"]
+    K_heads -.->|"∂L/∂W_k"| W_k["W_k Gradients"]
+    V_heads -.->|"∂L/∂W_v"| W_v["W_v Gradients"]
+    Embed -.->|"∂L/∂embed"| embed_grad["Embedding Gradients"]
 
     %% Styling
     classDef forward fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
